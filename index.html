@@ -3,15 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@reposter_obot — Бот для авторепоста и пересылки в Telegram</title>
+    
+    <title>Автопостинг и пересылка Telegram: @reposter_obot</title>
+    <meta name="description" content="Официальный бот @reposter_obot для автоматического репоста, копирования и автопостинга постов из любых Telegram каналов-доноров. Настройте пересыльщик контента за 2 минуты.">
+    <meta name="keywords" content="reposter_obot, автопостинг телеграм, пересылка постов, копирование каналов, граббер контента тг, фильтрация рекламы телеграм, репост бот">
+
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
+        :root {
+            --bg-color: #182533;
+            --card-bg: #202b36;
+            --text-color: #ffffff;
+            --text-muted: #7e91a1;
+            --accent-color: #2ea6ff;
+            --accent-hover: #1d90e6;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .phone-wrapper {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            margin: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-banner {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .header-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .features-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .feature-emoji {
+            margin-right: 12px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            color: #e4e7ea;
+        }
+
+        .btn-container {
+            padding: 0 24px 24px 24px;
+        }
+
+        .cta-button {
+            display: block;
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Блок со встроенным SpreadSimple виджетом внизу для синхронизации */
+        .widget-area {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+        }
+        .widget-area iframe {
+            width: 100%;
+            height: 80px;
+            border: none;
+        }
     </style>
 </head>
 <body>
 
-    <iframe src="https://tltmf7f.spread.name"></iframe>
+    <div class="phone-wrapper">
+        <div class="header-banner">
+            <div style="color: #ff2a2a; font-size: 42px; font-weight: 900; letter-spacing: 2px; font-family: Impact, sans-serif;">REPOSTER</div>
+        </div>
+
+        <div class="content">
+            <h1>Что умеет этот бот?</h1>
+            
+            <p class="subtitle">
+                Автоматический репост, копирование и автопостинг постов из любых каналов-доноров Telegram. Наш умный инструмент поможет вам полностью автоматизировать перенос контента в свои каналы ТГ.
+            </p>
+
+            <div class="features-title">Что умеет бот:</div>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span class="feature-emoji">🤖</span>
+                    <span class="feature-text"><strong>Автопостинг 24/7</strong> из открытых и закрытых каналов.</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-emoji">🔄</span>
+                    <span class="feature-text"><strong>Копирование</strong> без указания автора (чистый контент).</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-emoji">✂️</span>
+                    <span class="feature-text"><strong>Фильтрация рекламы</strong>, удаление ссылок и водяных знаков.</span>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-emoji">📝</span>
+                    <span class="feature-text"><strong>Замена текста</strong>, автоматическое добавление ваших ссылок и хэштегов.</span>
+                </li>
+            </ul>
+            
+            <div style="font-size: 15px; text-align: center; color: #e4e7ea; font-weight: 600; margin-bottom: 5px;">
+                Настройте пересыльщик контента за 2 минуты!
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="https://t.me/reposter_obot" target="_blank" class="cta-button">Запустить бота</a>
+        </div>
+
+        <div class="widget-area">
+            <iframe src="https://tltmf7f.spread.name"></iframe>
+        </div>
+    </div>
 
 </body>
 </html>
