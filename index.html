@@ -4,205 +4,316 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Автопостинг Telegram: бот для пересылки и копирования каналов @reposter_obot</title>
-    <meta name="description" content="Официальный бот @reposter_obot — автоматический репост, копирование и автопостинг постов из любых Telegram каналов-доноров. Умный пересыльщик контента с фильтрацией рекламы.">
-    <meta name="keywords" content="reposter_obot, автопостинг телеграм, пересылка постов, копирование каналов, граббер контента тг, фильтрация рекламы телеграм, репост бот, клонирование каналов, парсер тг, автоматизация телеграм">
+    <!-- SEO Оптимизация -->
+    <title>Автопостинг Telegram — Бот для пересылки и копирования каналов @reposter_obot</title>
+    <meta name="description" content="Официальный инструмент автоматизации @reposter_obot. Профессиональный автопостинг, копирование и репост постов из любых каналов-доноров Telegram с умной фильтрацией рекламы и заменой текста.">
+    <meta name="keywords" content="reposter_obot, автопостинг телеграм, пересылка постов, копирование каналов, граббер контента тг, фильтрация рекламы телеграм, репост бот, клонирование каналов, парсер тг">
 
     <style>
         :root {
-            --bg-dark: #0b0b0d;
-            --card-bg: #141416;
-            --gold: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
-            --red-accent: #e53e3e;
-            --text-light: #ffffff;
-            --text-muted: #a0aec0;
-            --border-gold: rgba(212, 175, 55, 0.2);
+            --card-bg: rgba(17, 17, 20, 0.92); /* Полупрозрачный фон, чтобы матрицу было видно сзади */
+            --card-inner: #16161a;
+            --gold-light: #f6e3a4;
+            --gold: #cfa83b;
+            --gold-gradient: linear-gradient(135deg, #f6e3a4 0%, #cfa83b 50%, #9e7921 100%);
+            --red-glow: #ff2a2a;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: rgba(207, 168, 59, 0.25);
         }
 
         body, html {
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: #000000;
+            overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .premium-landing {
+        /* Холст для анимации Матрицы */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 450px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.1);
-            margin: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-gold);
+            height: 100%;
+            z-index: 1; /* Уходит на задний план */
         }
 
-        .header-logo {
+        .landing-container {
+            width: 100%;
+            max-width: 460px;
+            background: var(--card-bg);
+            border-radius: 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(207, 168, 59, 0.1);
+            margin: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10; /* Карточка всегда поверх матрицы */
+            backdrop-filter: blur(4px); /* Эффект матового стекла для читаемости */
+        }
+
+        .logo-header {
             background: #000000;
             padding: 45px 20px;
             text-align: center;
             border-bottom: 2px solid var(--gold);
-            position: relative;
         }
 
-        /* Красный неоновый логотип как на аватарке */
         .logo-text {
             margin: 0;
-            color: var(--red-accent);
-            font-size: 42px;
+            color: var(--red-glow);
+            font-size: 46px;
             font-weight: 900;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             font-family: 'Impact', 'Arial Black', sans-serif;
-            text-shadow: 0 0 10px rgba(229, 62, 62, 0.6), 0 0 20px rgba(229, 62, 62, 0.3);
+            text-shadow: 0 0 12px rgba(255, 42, 42, 0.7), 0 0 25px rgba(255, 42, 42, 0.4);
         }
 
-        .content {
+        .main-content {
             padding: 30px;
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 25px;
             margin-top: 0;
             margin-bottom: 12px;
             font-weight: 700;
+            text-align: center;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-desc {
-            font-size: 15px;
+        .main-description {
+            font-size: 14.5px;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            text-align: center;
             line-height: 1.6;
+            margin-bottom: 30px;
         }
 
-        .section-title {
-            font-size: 14px;
+        .block-title {
+            font-size: 13px;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-light);
+            color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
             border-left: 3px solid var(--gold);
-            padding-left: 10px;
+            padding-left: 12px;
         }
 
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 35px 0;
-        }
-
-        .feature-item {
+        .settings-grid {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 22px;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .setting-card {
+            background: var(--card-inner);
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .setting-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .setting-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+
+        .setting-name {
             font-size: 15px;
-            line-height: 1.5;
-        }
-
-        .feature-icon {
-            margin-right: 15px;
-            font-size: 22px;
-            line-height: 1;
-        }
-
-        .feature-text strong {
-            color: var(--gold);
             font-weight: 600;
+            color: var(--gold-light);
         }
 
-        .feature-text {
-            color: #e2e8f0;
+        .setting-info {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
         }
 
-        .action-container {
+        .widget-section {
             background: rgba(0, 0, 0, 0.4);
-            padding: 25px;
-            border-top: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 10px;
+            border: 1px dashed rgba(207, 168, 59, 0.15);
+        }
+
+        .widget-section iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .action-block {
+            background: #000000;
+            padding: 25px 30px;
+            border-top: 1px solid var(--border-color);
             text-align: center;
         }
 
-        .action-info {
+        .action-hint {
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 16px;
-            letter-spacing: 0.5px;
         }
 
-        .gold-button {
+        .premium-btn {
             display: block;
             background: var(--gold-gradient);
             color: #000000;
             text-align: center;
             text-decoration: none;
             padding: 16px;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 17px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            letter-spacing: 0.8px;
+            box-shadow: 0 6px 20px rgba(207, 168, 59, 0.3);
+            transition: all 0.2s ease;
         }
 
-        .gold-button:hover {
+        .premium-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-        }
-
-        .gold-button:active {
-            transform: translateY(0);
+            box-shadow: 0 8px 25px rgba(207, 168, 59, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <div class="premium-landing">
-        <div class="header-logo">
+    <!-- Фоновый Canvas для Матрицы -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="landing-container">
+        <div class="logo-header">
             <div class="logo-text">REPOSTER</div>
         </div>
 
-        <div class="content">
+        <div class="main-content">
             <h1>Умный пересыльщик контента</h1>
-            <p class="hero-desc">
-                Профессиональный инструмент для полной автоматизации ваших Telegram-площадок. Мощный скрипт обеспечивает стабильный автопостинг, точное копирование и репост публикаций из любых каналов-доноров прямо в ваши целевые ресурсы.
+            <p class="main-description">
+                Профессиональное решение для автоматизации контента в Telegram. Наш софт без лишних пересылок копирует публикации из любых каналов-доноров, подстраивая их под формат вашей площадки.
             </p>
 
-            <div class="section-title">Функции автоматизации</div>
+            <div class="block-title">Функции софта</div>
             
-            <ul class="feature-list">
-                <li class="feature-item">
-                    <span class="feature-icon">⚡</span>
-                    <span class="feature-text"><strong>Автопостинг 24/7</strong> — моментальная доставка постов из открытых и закрытых приватных каналов без задержек.</span>
-                </li>
-                <li class="feature-item">
-                    <span class="feature-icon">✨</span>
-                    <span class="feature-text"><strong>Абсолютно чистый контент</strong> — идеальное копирование без указания автора (оригинального источника) и без лишних пересылок.</span>
-                </li>
-                <li class="feature-item">
-                    <span class="feature-icon">🎯</span>
-                    <span class="feature-text"><strong>Умный фильтр рекламы</strong> — автоматическое вырезание сторонних ссылок, рекламных интеграций, юзернеймов и водяных знаков.</span>
-                </li>
-                <li class="feature-item">
-                    <span class="feature-icon">📝</span>
-                    <span class="feature-text"><strong>Гибкий редактор текста</strong> — автоматическая замена фраз, добавление ваших личных хэштегов, уникальных подписей или рекламных кнопок.</span>
-                </li>
-            </ul>
+            <div class="settings-grid">
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-icon">🤖</span>
+                        <span class="setting-name">Автопостинг 24/7</span>
+                    </div>
+                    <p class="setting-info">Стабильное и непрерывное дублирование контента из открытых каналов и приватных закрытых групп без задержек.</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-icon">✨</span>
+                        <span class="setting-name">Чистое копирование</span>
+                    </div>
+                    <p class="setting-info">Посты отправляются от имени вашего канала. Полное удаление упоминаний первоисточника и оригинального автора.</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-icon">✂️</span>
+                        <span class="setting-name">Умная фильтрация рекламы</span>
+                    </div>
+                    <p class="setting-info">Автоматический парсинг текста: удаление сторонних ссылок, юзернеймов, медиафайлов и скрытых водяных знаков доноров.</p>
+                </div>
+
+                <div class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-icon">📝</span>
+                        <span class="setting-name">Гибкая замена текста</span>
+                    </div>
+                    <p class="setting-info">Автоматическое наложение ваших личных хэштегов, фирменных подписей или уникальных рекламных кнопок на лету.</p>
+                </div>
+            </div>
+
+            <div class="block-title">Тарифы и управление</div>
+            <div class="widget-section">
+                <iframe src="https://tltmf7f.spread.name"></iframe>
+            </div>
         </div>
 
-        <div class="action-container">
-            <div class="action-info">Запустите систему автоматизации за 2 минуты</div>
-            <a href="https://t.me/reposter_obot" target="_blank" class="gold-button">Запустить бота</a>
+        <div class="action-block">
+            <div class="action-hint">Настройка и запуск пересылки всего за 2 минуты!</div>
+            <a href="https://t.me/reposter_obot" target="_blank" class="premium-btn">Запустить бота</a>
         </div>
     </div>
+
+    <!-- Скрипт эффекта цифрового дождя Матрицы -->
+    <script>
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Устанавливаем размер на весь экран
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Набор символов (цифры и латиница)
+        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const charArr = chars.split("");
+
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        // Массив для отслеживания координаты Y для каждой колонки
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            // Слегка покрываем экран черным цветом с прозрачностью, чтобы буквы плавно затухали (эффект шлейфа)
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Задаем темно-зеленый цвет для падающего кода матрицы
+            ctx.fillStyle = "#0f4d19"; 
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                // Берем случайный символ
+                const text = charArr[Math.floor(Math.random() * charArr.length)];
+                
+                // Рисуем символ
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                // Если строка дошла до низа экрана, случайно скидываем её наверх
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        // Запуск бесконечного цикла анимации (скорость ~33 миллисекунды)
+        setInterval(drawMatrix, 33);
+    </script>
 
 </body>
 </html>
