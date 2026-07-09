@@ -4,192 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Автопостинг и пересылка Telegram: @reposter_obot</title>
-    <meta name="description" content="Официальный бот @reposter_obot для автоматического репоста, копирования и автопостинга постов из любых Telegram каналов-доноров. Настройте пересыльщик контента за 2 минуты.">
-    <meta name="keywords" content="reposter_obot, автопостинг телеграм, пересылка постов, копирование каналов, граббер контента тг, фильтрация рекламы телеграм, репост бот">
+    <title>Автопостинг Telegram: бот для пересылки и копирования каналов @reposter_obot</title>
+    <meta name="description" content="Официальный бот @reposter_obot — автоматический репост, копирование и автопостинг постов из любых Telegram каналов-доноров. Умный пересыльщик контента с фильтрацией рекламы.">
+    <meta name="keywords" content="reposter_obot, автопостинг телеграм, пересылка постов, копирование каналов, граббер контента тг, фильтрация рекламы телеграм, репост бот, клонирование каналов, парсер тг, автоматизация телеграм">
 
     <style>
         :root {
-            --bg-color: #182533;
-            --card-bg: #202b36;
-            --text-color: #ffffff;
-            --text-muted: #7e91a1;
-            --accent-color: #2ea6ff;
-            --accent-hover: #1d90e6;
+            --bg-dark: #0b0b0d;
+            --card-bg: #141416;
+            --gold: #d4af37;
+            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            --red-accent: #e53e3e;
+            --text-light: #ffffff;
+            --text-muted: #a0aec0;
+            --border-gold: rgba(212, 175, 55, 0.2);
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
 
-        .phone-wrapper {
+        .premium-landing {
             width: 100%;
-            max-width: 420px;
+            max-width: 450px;
             background: var(--card-bg);
             border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.1);
             margin: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-gold);
         }
 
-        .header-banner {
-            width: 100%;
-            height: 200px;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .header-logo {
+            background: #000000;
+            padding: 45px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
             position: relative;
         }
 
-        .header-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Красный неоновый логотип как на аватарке */
+        .logo-text {
+            margin: 0;
+            color: var(--red-accent);
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-shadow: 0 0 10px rgba(229, 62, 62, 0.6), 0 0 20px rgba(229, 62, 62, 0.3);
         }
 
         .content {
-            padding: 24px;
+            padding: 30px;
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 24px;
             margin-top: 0;
             margin-bottom: 12px;
-            font-weight: 600;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
+        .hero-desc {
             font-size: 15px;
             color: var(--text-muted);
-            margin-bottom: 24px;
-            line-height: 1.5;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
 
-        .features-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--text-color);
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid var(--gold);
+            padding-left: 10px;
         }
 
         .feature-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 30px 0;
+            margin: 0 0 35px 0;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 16px;
+            margin-bottom: 22px;
             font-size: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        .feature-emoji {
-            margin-right: 12px;
-            font-size: 18px;
-            flex-shrink: 0;
+        .feature-icon {
+            margin-right: 15px;
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .feature-text strong {
+            color: var(--gold);
+            font-weight: 600;
         }
 
         .feature-text {
-            color: #e4e7ea;
+            color: #e2e8f0;
         }
 
-        .btn-container {
-            padding: 0 24px 24px 24px;
+        .action-container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 25px;
+            border-top: 1px solid var(--border-gold);
+            text-align: center;
         }
 
-        .cta-button {
+        .action-info {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .gold-button {
             display: block;
-            background-color: var(--accent-color);
-            color: white;
+            background: var(--gold-gradient);
+            color: #000000;
             text-align: center;
             text-decoration: none;
-            padding: 14px;
+            padding: 16px;
             border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            font-size: 17px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .cta-button:hover {
-            background-color: var(--accent-hover);
+        .gold-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
 
-        .cta-button:active {
-            transform: scale(0.98);
-        }
-
-        /* Блок со встроенным SpreadSimple виджетом внизу для синхронизации */
-        .widget-area {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            background: rgba(0,0,0,0.2);
-        }
-        .widget-area iframe {
-            width: 100%;
-            height: 80px;
-            border: none;
+        .gold-button:active {
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-    <div class="phone-wrapper">
-        <div class="header-banner">
-            <div style="color: #ff2a2a; font-size: 42px; font-weight: 900; letter-spacing: 2px; font-family: Impact, sans-serif;">REPOSTER</div>
+    <div class="premium-landing">
+        <div class="header-logo">
+            <div class="logo-text">REPOSTER</div>
         </div>
 
         <div class="content">
-            <h1>Что умеет этот бот?</h1>
-            
-            <p class="subtitle">
-                Автоматический репост, копирование и автопостинг постов из любых каналов-доноров Telegram. Наш умный инструмент поможет вам полностью автоматизировать перенос контента в свои каналы ТГ.
+            <h1>Умный пересыльщик контента</h1>
+            <p class="hero-desc">
+                Профессиональный инструмент для полной автоматизации ваших Telegram-площадок. Мощный скрипт обеспечивает стабильный автопостинг, точное копирование и репост публикаций из любых каналов-доноров прямо в ваши целевые ресурсы.
             </p>
 
-            <div class="features-title">Что умеет бот:</div>
+            <div class="section-title">Функции автоматизации</div>
             
             <ul class="feature-list">
                 <li class="feature-item">
-                    <span class="feature-emoji">🤖</span>
-                    <span class="feature-text"><strong>Автопостинг 24/7</strong> из открытых и закрытых каналов.</span>
+                    <span class="feature-icon">⚡</span>
+                    <span class="feature-text"><strong>Автопостинг 24/7</strong> — моментальная доставка постов из открытых и закрытых приватных каналов без задержек.</span>
                 </li>
                 <li class="feature-item">
-                    <span class="feature-emoji">🔄</span>
-                    <span class="feature-text"><strong>Копирование</strong> без указания автора (чистый контент).</span>
+                    <span class="feature-icon">✨</span>
+                    <span class="feature-text"><strong>Абсолютно чистый контент</strong> — идеальное копирование без указания автора (оригинального источника) и без лишних пересылок.</span>
                 </li>
                 <li class="feature-item">
-                    <span class="feature-emoji">✂️</span>
-                    <span class="feature-text"><strong>Фильтрация рекламы</strong>, удаление ссылок и водяных знаков.</span>
+                    <span class="feature-icon">🎯</span>
+                    <span class="feature-text"><strong>Умный фильтр рекламы</strong> — автоматическое вырезание сторонних ссылок, рекламных интеграций, юзернеймов и водяных знаков.</span>
                 </li>
                 <li class="feature-item">
-                    <span class="feature-emoji">📝</span>
-                    <span class="feature-text"><strong>Замена текста</strong>, автоматическое добавление ваших ссылок и хэштегов.</span>
+                    <span class="feature-icon">📝</span>
+                    <span class="feature-text"><strong>Гибкий редактор текста</strong> — автоматическая замена фраз, добавление ваших личных хэштегов, уникальных подписей или рекламных кнопок.</span>
                 </li>
             </ul>
-            
-            <div style="font-size: 15px; text-align: center; color: #e4e7ea; font-weight: 600; margin-bottom: 5px;">
-                Настройте пересыльщик контента за 2 минуты!
-            </div>
         </div>
 
-        <div class="btn-container">
-            <a href="https://t.me/reposter_obot" target="_blank" class="cta-button">Запустить бота</a>
-        </div>
-
-        <div class="widget-area">
-            <iframe src="https://tltmf7f.spread.name"></iframe>
+        <div class="action-container">
+            <div class="action-info">Запустите систему автоматизации за 2 минуты</div>
+            <a href="https://t.me/reposter_obot" target="_blank" class="gold-button">Запустить бота</a>
         </div>
     </div>
 
