@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Автопостинг Telegram — Бот для пересылки и копирования каналов @reposter_obot</title>
-    <meta name="description" content="Официальный инструмент автоматизации @reposter_obot. Профессиональный автопостинг, копирование и репост постов из любых каналов-доноров Telegram с умной фильтрацией рекламы и заменой текста.">
-    <meta name="keywords" content="reposter_obot, автопостинг телеграм, пересылка постов, копирование каналов, граббер контента тг, фильтрация рекламы телеграм, репост бот, клонирование каналов, парсер тг">
+    <!-- SEO Meta Tags -->
+    <title>Reposter Bot | Автопостинг Telegram и управление сетью каналов</title>
+    <meta name="description" content="Профессиональный бот для автоматизации контента в Telegram. Автопостинг 24/7, чистое копирование, умная фильтрация рекламы и управление сетью каналов.">
+    <meta name="keywords" content="автопостинг Telegram, автоматизация контента, управление сетью каналов, репостер бот, копирование постов телеграм, граббер контента тг, reposter_obot">
+    
+    <!-- Open Graph (для корректного отображения превью в Telegram/Соцсетях) -->
+    <meta property="og:title" content="Reposter Bot | Автопостинг Telegram">
+    <meta property="og:description" content="Лучший инструмент для автоматического копирования и управления контентом в ваших Telegram-каналах.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reposter-bot.netlify.app/">
 
     <style>
         :root {
-            --card-bg: rgba(17, 17, 20, 0.92); /* Полупрозрачный фон для видимости матрицы */
+            --card-bg: rgba(17, 17, 20, 0.92);
             --card-inner: #16161a;
             --gold-light: #f6e3a4;
             --gold: #cfa83b;
@@ -33,7 +40,6 @@
             align-items: center;
         }
 
-        /* Холст матрицы */
         #matrix-canvas {
             position: fixed;
             top: 0;
@@ -127,7 +133,6 @@
             margin-bottom: 6px;
         }
 
-        /* Геометрические золотые маркеры вместо старых смайликов */
         .setting-marker {
             color: var(--gold);
             font-weight: bold;
