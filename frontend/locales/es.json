@@ -1,0 +1,22 @@
+{
+  "meta_title": "Reposter Bot | Publicación automática en Telegram y gestión de red de canales",
+  "meta_description": "Un bot profesional para automatizar el contenido en tu red de canales de Telegram. Publicación automática 24/7, rebranding de publicaciones y limpieza inteligente al transferir entre canales.",
+  "meta_keywords": "publicación automática Telegram, automatización de contenido, gestión de red de canales, bot de republicación, republicación Telegram",
+  "og_title": "Reposter Bot | Publicación automática en Telegram",
+  "og_description": "Una herramienta para distribuir automáticamente el contenido en tu red de canales de Telegram.",
+  "logo": "REPOSTER",
+  "h1": "Gestor inteligente de red de canales",
+  "main_description": "Una solución profesional para automatizar la publicación en tu red de canales de Telegram. El bot transfiere publicaciones desde tu canal principal (origen) a tus canales secundarios (destino), adaptando el formato a cada uno.",
+  "block_title": "Funciones del software",
+  "feature1_name": "Publicación automática 24/7",
+  "feature1_info": "Transferencia de contenido estable y continua entre los canales de tu red, sin demoras.",
+  "feature2_name": "Rebranding de publicaciones",
+  "feature2_info": "Las publicaciones se publican a nombre del canal de destino: la firma y la identidad del canal de origen se sustituyen por las del canal de destino.",
+  "feature3_name": "Limpieza inteligente al transferir",
+  "feature3_info": "Procesamiento automático del texto: eliminación de enlaces y marcadores internos del canal de origen que no corresponden al canal de destino.",
+  "feature4_name": "Reemplazo de texto flexible",
+  "feature4_info": "Inserción automática de hashtags, firmas de marca o botones propios de cada canal de destino, sobre la marcha.",
+  "action_hint": "¡Configura y lanza el reenvío en solo 2 minutos!",
+  "cta_button": "Iniciar el bot",
+  "lang_switch_label": "Idioma"
+}

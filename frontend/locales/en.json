@@ -1,0 +1,22 @@
+{
+  "meta_title": "Reposter Bot | Telegram Autoposting & Channel Network Management",
+  "meta_description": "A professional bot for automating content across your Telegram channel network. 24/7 autoposting, post rebranding, and smart cleanup when moving content between channels.",
+  "meta_keywords": "telegram autoposting, content automation, channel network management, reposter bot, telegram crossposting",
+  "og_title": "Reposter Bot | Telegram Autoposting",
+  "og_description": "A tool for automatically distributing content across your network of Telegram channels.",
+  "logo": "REPOSTER",
+  "h1": "Smart Channel Network Manager",
+  "main_description": "A professional solution for automating publishing across your network of Telegram channels. The bot moves posts from your main (source) channel to your child (destination) channels, adapting the formatting for each one.",
+  "block_title": "Software Features",
+  "feature1_name": "24/7 Autoposting",
+  "feature1_info": "Stable, continuous content transfer between the channels in your network without delays.",
+  "feature2_name": "Post Rebranding",
+  "feature2_info": "Posts are published under the destination channel's name: the source channel's signature and branding are replaced with the destination channel's own branding.",
+  "feature3_name": "Smart Cleanup on Transfer",
+  "feature3_info": "Automatic text processing: removal of the source channel's internal links and markers that don't belong on the destination channel.",
+  "feature4_name": "Flexible Text Replacement",
+  "feature4_info": "Automatic insertion of hashtags, branded signatures, or buttons specific to each destination channel on the fly.",
+  "action_hint": "Set up and launch forwarding in just 2 minutes!",
+  "cta_button": "Launch the Bot",
+  "lang_switch_label": "Language"
+}

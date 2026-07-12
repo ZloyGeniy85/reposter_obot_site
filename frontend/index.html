@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags (перезаписываются i18n.js под выбранный язык) -->
+    <title>Reposter Bot | Автопостинг Telegram и управление сетью каналов</title>
+    <meta name="description" content="Профессиональный бот для автоматизации контента в сети ваших Telegram-каналов. Автопостинг 24/7, ребрендинг постов и умная очистка при переносе между каналами.">
+    <meta name="keywords" content="автопостинг Telegram, автоматизация контента, управление сетью каналов, репостер бот, кросспостинг телеграм">
+    <link rel="canonical" href="https://reposter-bot.netlify.app/">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Reposter Bot | Автопостинг Telegram">
+    <meta property="og:description" content="Инструмент для автоматического распределения контента внутри вашей сети Telegram-каналов.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reposter-bot.netlify.app/">
+    <meta property="og:image" content="https://reposter-bot.netlify.app/assets/img/og-cover.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Reposter Bot | Автопостинг Telegram">
+    <meta name="twitter:description" content="Автоматизация контента в сети ваших Telegram-каналов.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Reposter Bot",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Telegram",
+        "url": "https://reposter-bot.netlify.app/",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
+    <main class="landing-container">
+        <header class="logo-header">
+            <h1 class="logo-text" data-i18n="logo">REPOSTER</h1>
+
+            <nav class="lang-switcher" aria-label="Language switcher">
+                <button class="lang-btn" data-lang="ru" type="button">RU</button>
+                <button class="lang-btn" data-lang="en" type="button">EN</button>
+                <button class="lang-btn" data-lang="ar" type="button">AR</button>
+                <button class="lang-btn" data-lang="hi" type="button">HI</button>
+                <button class="lang-btn" data-lang="fr" type="button">FR</button>
+                <button class="lang-btn" data-lang="es" type="button">ES</button>
+            </nav>
+        </header>
+
+        <section class="main-content">
+            <h2 data-i18n="h1">Умный менеджер сети каналов</h2>
+            <p class="main-description" data-i18n="main_description">
+                Профессиональное решение для автоматизации публикаций внутри вашей сети Telegram-каналов.
+            </p>
+
+            <h3 class="block-title" data-i18n="block_title">Функции софта</h3>
+
+            <div class="settings-grid">
+                <article class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-marker" aria-hidden="true">[⚡]</span>
+                        <span class="setting-name" data-i18n="feature1_name">Автопостинг 24/7</span>
+                    </div>
+                    <p class="setting-info" data-i18n="feature1_info">Стабильный перенос контента между каналами вашей сети.</p>
+                </article>
+
+                <article class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-marker" aria-hidden="true">[★]</span>
+                        <span class="setting-name" data-i18n="feature2_name">Ребрендинг постов</span>
+                    </div>
+                    <p class="setting-info" data-i18n="feature2_info">Посты публикуются от имени канала-приёмника.</p>
+                </article>
+
+                <article class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-marker" aria-hidden="true">[✂]</span>
+                        <span class="setting-name" data-i18n="feature3_name">Умная очистка при переносе</span>
+                    </div>
+                    <p class="setting-info" data-i18n="feature3_info">Удаление служебных ссылок и меток донорского канала.</p>
+                </article>
+
+                <article class="setting-card">
+                    <div class="setting-header">
+                        <span class="setting-marker" aria-hidden="true">[⚙]</span>
+                        <span class="setting-name" data-i18n="feature4_name">Гибкая замена текста</span>
+                    </div>
+                    <p class="setting-info" data-i18n="feature4_info">Подстановка хэштегов и подписей на лету.</p>
+                </article>
+            </div>
+        </section>
+
+        <footer class="action-block">
+            <p class="action-hint" data-i18n="action_hint">Настройка и запуск пересылки всего за 2 минуты!</p>
+            <a href="https://t.me/reposter_obot" target="_blank" rel="noopener noreferrer" class="premium-btn" data-i18n="cta_button">Запустить бота</a>
+        </footer>
+    </main>
+
+    <script src="assets/js/matrix.js"></script>
+    <script src="assets/js/i18n.js"></script>
+</body>
+</html>

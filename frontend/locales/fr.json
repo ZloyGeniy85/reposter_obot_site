@@ -1,0 +1,22 @@
+{
+  "meta_title": "Reposter Bot | Publication automatique Telegram et gestion de réseau de chaînes",
+  "meta_description": "Un bot professionnel pour automatiser le contenu au sein de votre réseau de chaînes Telegram. Publication automatique 24/7, rebranding des publications et nettoyage intelligent lors du transfert entre chaînes.",
+  "meta_keywords": "publication automatique Telegram, automatisation de contenu, gestion de réseau de chaînes, bot de republication, republication Telegram",
+  "og_title": "Reposter Bot | Publication automatique Telegram",
+  "og_description": "Un outil pour distribuer automatiquement le contenu au sein de votre réseau de chaînes Telegram.",
+  "logo": "REPOSTER",
+  "h1": "Gestionnaire intelligent de réseau de chaînes",
+  "main_description": "Une solution professionnelle pour automatiser la publication au sein de votre réseau de chaînes Telegram. Le bot transfère les publications de votre chaîne principale (source) vers vos chaînes filles (destination), en adaptant la mise en forme pour chacune.",
+  "block_title": "Fonctionnalités du logiciel",
+  "feature1_name": "Publication automatique 24/7",
+  "feature1_info": "Transfert de contenu stable et continu entre les chaînes de votre réseau, sans délai.",
+  "feature2_name": "Rebranding des publications",
+  "feature2_info": "Les publications sont diffusées au nom de la chaîne de destination : la signature et l'identité visuelle de la chaîne source sont remplacées par celles de la chaîne de destination.",
+  "feature3_name": "Nettoyage intelligent lors du transfert",
+  "feature3_info": "Traitement automatique du texte : suppression des liens et marqueurs internes de la chaîne source qui ne concernent pas la chaîne de destination.",
+  "feature4_name": "Remplacement de texte flexible",
+  "feature4_info": "Insertion automatique de hashtags, de signatures de marque ou de boutons propres à chaque chaîne de destination, à la volée.",
+  "action_hint": "Configuration et lancement du transfert en seulement 2 minutes !",
+  "cta_button": "Lancer le bot",
+  "lang_switch_label": "Langue"
+}
